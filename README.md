@@ -25,21 +25,6 @@ Next, we'll clone this project and launch Vagrant in a shell session:
     vagrant up
     vagrant ssh captut
 
-Once you're inside the captut shell:
-
-    [vagrant@captut ~]$ bash /vagrant/shell/accept_known_hosts_ssh_fingerprints.sh
-    Warning: Permanently added 'captut' (RSA) to the list of known hosts.
-    captut
-    /home/vagrant/.ssh/known_hosts: adding captut [ADDED]
-    Warning: Permanently added 'capalpha,10.0.0.102' (RSA) to the list of known hosts.
-    capalpha
-    /home/vagrant/.ssh/known_hosts: adding capalpha [ADDED]
-    Warning: Permanently added 'capbravo,10.0.0.103' (RSA) to the list of known hosts.
-    capbravo
-    /home/vagrant/.ssh/known_hosts: adding capbravo [ADDED]
-    [vagrant@captut ~]$ 
-
-
 Now you're all set to go!
 
 ### How do I know Capistrano is set up right?
@@ -195,7 +180,6 @@ going to use like this. Let's update the script so it works both ways:
     set :myname, "you person you"
     
     namespace :hello do
-    
       task :default do
         puts "Hello world"
       end

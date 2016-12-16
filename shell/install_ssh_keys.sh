@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+SCRIPT="install_ssh_keys.sh"
 VAGRANT_CONFIG_DIR="/vagrant/config"
 SSH_DIR="/home/vagrant/.ssh"
 KEY_NAME="captut"
@@ -47,6 +48,10 @@ append_authorized_keys() {
     fi
 }
 
+echo "${SCRIPT}: start - $(date)"
+
 install_private_key
 install_public_key
 append_authorized_keys
+
+echo "${SCRIPT}: finish - $(date)"
