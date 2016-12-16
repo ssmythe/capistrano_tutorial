@@ -1,7 +1,7 @@
 VAGRANTFILE_API_VERSION = '2'
 CENTOS67_BOX_NAME = 'bento/centos-6.7'
 
-DOS2UNIX_SHELL_SCRIPTS = '' unless (ENV['OS'] == 'Windows_NT')
+DOS2UNIX_SHELL_SCRIPTS = 'shell/dos2unix_shell_scripts_skipping.sh' unless (ENV['OS'] == 'Windows_NT')
 DOS2UNIX_SHELL_SCRIPTS = 'shell/dos2unix_shell_scripts.sh' if (ENV['OS'] == 'Windows_NT')
 UPDATE_HOSTS_FILE = 'shell/update_hosts_file.sh'
 INSTALL_SSH_KEYS = 'shell/install_ssh_keys.sh'
