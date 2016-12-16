@@ -406,6 +406,14 @@ Let's run it with defaults and then run it setting "env=qa":
     I'm only running in qa
     [vagrant@captut ~]$
 
+### Cleanup
+
+If you're all done exploring Capistrano, exit out of your vagrant ssh session, and then in the original shell session:
+
+    vagrant destroy -f
+
+That shuts down and destroys all vagrant VMs that were spun up for this tutorial.
+
 ### Wrapup
 
 That wraps up the simple stuff with Capistrano. I hope you enjoyed
