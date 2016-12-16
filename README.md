@@ -233,7 +233,6 @@ When we run it, the output looks like:
        * 2016-12-15 14:29:12 executing simple' 
       * executing "uname -a"
         servers: ["localhost"]
-    vagrant@localhost's password: 
         [localhost] executing command
      ** [out :: localhost] Linux captut 2.6.32-573.el6.x86_64 #1 SMP Thu Jul 23 15:44:03 UTC 2015 x86_64 x86_64 x86_64 GNU/Linux
         command finished in 163ms
