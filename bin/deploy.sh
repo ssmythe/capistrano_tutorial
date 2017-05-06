@@ -160,6 +160,7 @@ does_output_exist() {
 }
 
 template_pack_properties() {
+    # "base64" to encode
     rm -f ${tmp_packed_props}
     cat ${arg2} | sed -e 's/=/ /' | while read k v
     do
@@ -174,6 +175,7 @@ template_cleanup_pack_properties() {
 template_render_actual() {
     output=$1
 
+    # "base64 -d" to decode works as well
     template_pack_properties
 
     cp -f ${arg1} ${tmp_output}
@@ -208,7 +210,7 @@ template_render() {
     if [[ $(is_template_name_valid) -eq 0 && $(is_template_rendered) -eq 0 ]]; then
         status "service ${verb} ${arg1}" "SKIP"
     else
-        template_render_actual ${arg3}
+        mv -f ${tmp_compare_output} ${arg3}
         if [[ $(is_template_rendered) -eq 1 ]]; then
             status "template ${verb} ${arg1}" "ERROR"
             error "unable to ${verb} template \"${arg1}\"" 0 1
