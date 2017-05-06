@@ -6,14 +6,14 @@ deploy() {
 }
 
 # PACKAGE INSTALL
-deploy package install httpd
+#deploy package install httpd
 #deploy package install httpd
 #deploy package install java-1.8.0-openjdk-1.8.0.121-1.b13.el6.x86_64
 #deploy package install java-1.8.0-openjdk-1.8.0.121-1.b13.el6.x86_64
 
 # SERVICE ENABLE
 #chkconfig --list httpd
-deploy service enable httpd
+#deploy service enable httpd
 #deploy service enable httpd
 #chkconfig --list httpd
 
@@ -24,7 +24,7 @@ deploy service enable httpd
 
 # SERVICE START
 #/sbin/service httpd status || true
-deploy service start httpd
+#deploy service start httpd
 #sleep 1
 #/sbin/service httpd status || true
 
@@ -38,3 +38,9 @@ deploy service start httpd
 #deploy package remove httpd
 #deploy package remove java-1.8.0-openjdk-1.8.0.121-1.b13.el6.x86_64
 #deploy package remove java-1.8.0-openjdk-1.8.0.121-1.b13.el6.x86_64
+
+# TEMPLATE
+rm -f /tmp/test_deploy_hello_output.txt
+deploy template render /vagrant/bin/hello_template.txt /vagrant/bin/hello_properties.txt /tmp/test_deploy_hello_output.txt
+cat /tmp/test_deploy_hello_output.txt
+#deploy template render /vagrant/bin/hello_template.txt /vagrant/bin/hello_properties.txt /tmp/test_deploy_hello_output.txt

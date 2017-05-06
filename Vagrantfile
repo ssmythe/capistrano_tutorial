@@ -8,6 +8,7 @@ INSTALL_SSH_KEYS = 'shell/install_ssh_keys.sh'
 INSTALL_RVM_PREREQS = 'shell/install_rvm_prereqs_centos6.sh'
 INSTALL_RVM_RUBY_233_NO_DOCS = 'shell/install_ruby_2.3.3_for_vagrant_user.sh'
 INSTALL_CAP_2155 = 'shell/install_capistrano_2.15.5_for_vagrant_user.sh'
+INSTALL_PERL = 'shell/install_perl.sh'
 ACCEPT_KNOWN_HOSTS = 'shell/accept_known_hosts_for_vagrant.sh'
 
 servers = {
@@ -18,6 +19,7 @@ servers = {
     :ip => '10.0.0.102',
     :provision_shells => [
       UPDATE_HOSTS_FILE,
+      INSTALL_PERL,
       INSTALL_SSH_KEYS
     ]
   },
@@ -28,6 +30,7 @@ servers = {
     :ip => '10.0.0.103',
     :provision_shells => [
       UPDATE_HOSTS_FILE,
+      INSTALL_PERL,
       INSTALL_SSH_KEYS
     ]
   },
@@ -43,6 +46,7 @@ servers = {
       INSTALL_RVM_PREREQS,
       INSTALL_RVM_RUBY_233_NO_DOCS,
       INSTALL_CAP_2155,
+      INSTALL_PERL,
       ACCEPT_KNOWN_HOSTS
     ]
   }

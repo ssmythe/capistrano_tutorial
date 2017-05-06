@@ -34,7 +34,11 @@ deploy() {
 #/sbin/service httpd status || true
 
 # PACKAGE REMOVE
-deploy package remove httpd
+#deploy package remove httpd
 #deploy package remove httpd
 #deploy package remove java-1.8.0-openjdk-1.8.0.121-1.b13.el6.x86_64
 #deploy package remove java-1.8.0-openjdk-1.8.0.121-1.b13.el6.x86_64
+
+# TEMPLATE
+echo deleting /tmp/test_deploy_hello_output.txt
+rm -f /tmp/test_deploy_hello_output.txt

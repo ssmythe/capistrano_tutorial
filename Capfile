@@ -28,11 +28,13 @@ namespace :simple do
 
   desc "Run Test Deploy on agroup"
   task :run_test_deploy_on_agroup, :roles => [ :agroup ] do
+    run "#{sudo} yum -y install perl"
     run "#{sudo} /bin/bash /vagrant/bin/test_deploy.sh"
   end
 
   desc "Run Test Deploy on all"
   task :run_test_deploy_on_all, :roles => [ :all ] do
+    run "#{sudo} yum -y install perl"
     run "#{sudo} /bin/bash /vagrant/bin/test_deploy.sh"
   end
 
