@@ -1,1 +1,1 @@
-yum -y install dos2unix && /usr/bin/dos2unix /vagrant/shell/*.sh
+yum -y install dos2unix && /usr/bin/dos2unix /vagrant/shell/*.sh /vagrant/bin/*.sh
