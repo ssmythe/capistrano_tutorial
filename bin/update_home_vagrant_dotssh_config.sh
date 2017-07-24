@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-SSHD_CONFIG="/etc/ssh/sshd_config"
+DOTSSH_CONFIG="/home/vagrant/.ssh/config"
+OWNER="vagrant"
 
 require_running_as_root() {
     if [[ $(whoami) != "root" ]]; then
@@ -44,9 +45,9 @@ check_apply_verify() {
     else
         echo "${config_file} ${config_value} already updated"
     fi
+    chown ${OWNER}:${OWNER} ${config_file}
 }
 
 require_running_as_root
-#check_apply_verify "${SSHD_CONFIG}" "^ClientAliveInterval" "ClientAliveInterval 300"
-check_apply_verify "${SSHD_CONFIG}" "^ClientAliveInterval" "ClientAliveInterval 30" # for testing
-check_apply_verify "${SSHD_CONFIG}" "^ClientAliveCountMax" "ClientAliveCountMax 0"
+check_apply_verify "${DOTSSH_CONFIG}" "^Host" "Host *"
+check_apply_verify "${DOTSSH_CONFIG}" "^    ServerAliveInterval" "    ServerAliveInterval 10" # for testing

@@ -322,6 +322,11 @@ service_start() {
     fi
 }
 
+service_restart() {
+    verb="stop" && service_stop
+    verb="start" && service_start
+}
+
 service_stop() {
     if [[ $(does_service_exist) -eq 0 && $(is_service_running) -eq 1 ]]; then
         status "service ${verb} ${arg1}" "SKIP"
@@ -343,6 +348,9 @@ process_service() {
             ;;
         disable)
             service_disable
+            ;;
+        restart)
+            service_restart
             ;;
         start)
             service_start

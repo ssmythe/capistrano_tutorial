@@ -1,0 +1,97 @@
+# Configuration
+set :user, 'vagrant'
+
+# Servers
+server "captut", :all, :local
+server "capalpha", :all, :agroup
+server "capbravo", :all, :bgroup
+
+# Tasks
+namespace :sshd do
+  desc "Default action: hostname and current user"
+  task :default do
+    setup_ssh_client_secure_on_local
+    setup_ssh_client_secure_on_agroup
+    setup_ssh_client_secure_on_bgroup
+    setup_sshd_secure_on_local
+    setup_sshd_secure_on_agroup
+    setup_sshd_secure_on_bgroup
+
+    # remove_ssh_client_secure_on_local
+    # remove_ssh_client_secure_on_agroup
+    # remove_ssh_client_secure_on_bgroup
+    # remove_sshd_secure_on_local
+    # remove_sshd_secure_on_agroup
+    # remove_sshd_secure_on_bgroup
+  end
+
+  # SSH client settings
+  
+  desc "Setup ssh_client secure on local"
+  task :setup_ssh_client_secure_on_local, :roles => [ :local ] do
+    run "#{sudo} /bin/bash /vagrant/bin/update_home_vagrant_dotssh_config.sh"
+  end
+
+  desc "Setup ssh_client secure on agroup"
+  task :setup_ssh_client_secure_on_agroup, :roles => [ :agroup ] do
+    run "#{sudo} /bin/bash /vagrant/bin/update_home_vagrant_dotssh_config.sh"
+  end
+
+  desc "Setup ssh_client secure on bgroup"
+  task :setup_ssh_client_secure_on_bgroup, :roles => [ :bgroup ] do
+    run "#{sudo} /bin/bash /vagrant/bin/update_home_vagrant_dotssh_config.sh"
+  end
+
+  desc "Remove ssh_client secure on local"
+  task :remove_ssh_client_secure_on_local, :roles => [ :local ] do
+    run "#{sudo} /bin/bash /vagrant/bin/remove_home_vagrant_dotssh_config.sh"
+  end
+
+  desc "Remove ssh_client secure on agroup"
+  task :remove_ssh_client_secure_on_agroup, :roles => [ :agroup ] do
+    run "#{sudo} /bin/bash /vagrant/bin/remove_home_vagrant_dotssh_config.sh"
+  end
+
+  desc "Remove ssh_client secure on bgroup"
+  task :remove_ssh_client_secure_on_bgroup, :roles => [ :bgroup ] do
+    run "#{sudo} /bin/bash /vagrant/bin/remove_home_vagrant_dotssh_config.sh"
+  end
+
+  # SSHD settings
+  
+  desc "Setup sshd secure on local"
+  task :setup_sshd_secure_on_local, :roles => [ :local ] do
+    run "#{sudo} /bin/bash /vagrant/bin/update_etc_ssh_sshd_config.sh"
+    run "#{sudo} /bin/bash /vagrant/bin/deploy.sh service restart sshd"
+  end
+
+  desc "Setup sshd secure on agroup"
+  task :setup_sshd_secure_on_agroup, :roles => [ :agroup ] do
+    run "#{sudo} /bin/bash /vagrant/bin/update_etc_ssh_sshd_config.sh"
+    run "#{sudo} /bin/bash /vagrant/bin/deploy.sh service restart sshd"
+  end
+
+  desc "Setup sshd secure on bgroup"
+  task :setup_sshd_secure_on_bgroup, :roles => [ :bgroup ] do
+    run "#{sudo} /bin/bash /vagrant/bin/update_etc_ssh_sshd_config.sh"
+    run "#{sudo} /bin/bash /vagrant/bin/deploy.sh service restart sshd"
+  end
+
+  desc "Remove sshd secure on local"
+  task :remove_sshd_secure_on_local, :roles => [ :local ] do
+    run "#{sudo} /bin/bash /vagrant/bin/remove_etc_ssh_sshd_config.sh"
+    run "#{sudo} /bin/bash /vagrant/bin/deploy.sh service restart sshd"
+  end
+
+  desc "Remove sshd secure on agroup"
+  task :remove_sshd_secure_on_agroup, :roles => [ :agroup ] do
+    run "#{sudo} /bin/bash /vagrant/bin/remove_etc_ssh_sshd_config.sh"
+    run "#{sudo} /bin/bash /vagrant/bin/deploy.sh service restart sshd"
+  end
+
+  desc "Remove sshd secure on bgroup"
+  task :remove_sshd_secure_on_bgroup, :roles => [ :bgroup ] do
+    run "#{sudo} /bin/bash /vagrant/bin/remove_etc_ssh_sshd_config.sh"
+    run "#{sudo} /bin/bash /vagrant/bin/deploy.sh service restart sshd"
+  end
+end
