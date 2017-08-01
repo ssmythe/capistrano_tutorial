@@ -6,6 +6,8 @@ DOS2UNIX_SHELL_SCRIPTS = 'shell/dos2unix_shell_scripts.sh' if (ENV['OS'] == 'Win
 UPDATE_HOSTS_FILE = 'shell/update_hosts_file.sh'
 INSTALL_SSH_KEYS = 'shell/install_ssh_keys.sh'
 INSTALL_RVM_PREREQS = 'shell/install_rvm_prereqs_centos6.sh'
+INSTALL_RVM_RUBY_187_NO_DOCS = 'shell/install_ruby_1.8.7_for_vagrant_user.sh'
+INSTALL_CAP_260 = 'shell/install_capistrano_2.6.0_for_vagrant_user.sh'
 INSTALL_RVM_RUBY_233_NO_DOCS = 'shell/install_ruby_2.3.3_for_vagrant_user.sh'
 INSTALL_CAP_2155 = 'shell/install_capistrano_2.15.5_for_vagrant_user.sh'
 INSTALL_PERL = 'shell/install_perl.sh'
@@ -39,6 +41,22 @@ servers = {
     :cpu => '1',
     :ram => '1024',
     :ip => '10.0.0.101',
+    :provision_shells => [
+      DOS2UNIX_SHELL_SCRIPTS,
+      UPDATE_HOSTS_FILE,
+      INSTALL_SSH_KEYS,
+      INSTALL_RVM_PREREQS,
+      INSTALL_RVM_RUBY_187_NO_DOCS,
+      INSTALL_CAP_260,
+      INSTALL_PERL,
+      ACCEPT_KNOWN_HOSTS
+    ]
+  },
+  :captut233 => {
+    :box => CENTOS67_BOX_NAME,
+    :cpu => '1',
+    :ram => '1024',
+    :ip => '10.0.0.104',
     :provision_shells => [
       DOS2UNIX_SHELL_SCRIPTS,
       UPDATE_HOSTS_FILE,

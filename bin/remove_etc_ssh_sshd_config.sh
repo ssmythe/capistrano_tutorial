@@ -25,8 +25,9 @@ remove_config_file_change() {
     local config_file=$1
     local config_pattern=$2
 
-    grep -v -e "${config_pattern}" ${config_file} > ${config_file}.$$
-    mv ${config_file}.$$ ${config_file}
+    sed -i "/${config_pattern}/d" ${config_file}
+#    grep -v -e "${config_pattern}" ${config_file} > ${config_file}.$$
+#    mv ${config_file}.$$ ${config_file}
 }
 
 check_remove_verify() {
@@ -48,5 +49,6 @@ check_remove_verify() {
 }
 
 require_running_as_root
+#check_remove_verify "${SSHD_CONFIG}" "^ClientAliveInterval" "ClientAliveInterval 300" # for testing
 check_remove_verify "${SSHD_CONFIG}" "^ClientAliveInterval" "ClientAliveInterval 30" # for testing
 check_remove_verify "${SSHD_CONFIG}" "^ClientAliveCountMax" "ClientAliveCountMax 0"
