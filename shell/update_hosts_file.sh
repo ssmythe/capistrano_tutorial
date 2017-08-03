@@ -17,6 +17,7 @@ add_host() {
 echo "${SCRIPT}: start - $(date)"
 
 add_host 'captut' '10.0.0.101'
+add_host 'captut233' '10.0.0.104'
 add_host 'capalpha' '10.0.0.102'
 add_host 'capbravo' '10.0.0.103'
 
