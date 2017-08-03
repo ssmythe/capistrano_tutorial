@@ -1,5 +1,5 @@
 VAGRANTFILE_API_VERSION = '2'
-CENTOS67_BOX_NAME = 'bento/centos-6.7'
+CENTOS69_BOX_NAME = 'bento/centos-6.9'
 
 DOS2UNIX_SHELL_SCRIPTS = 'shell/dos2unix_shell_scripts_skipping.sh' unless (ENV['OS'] == 'Windows_NT')
 DOS2UNIX_SHELL_SCRIPTS = 'shell/dos2unix_shell_scripts.sh' if (ENV['OS'] == 'Windows_NT')
@@ -15,7 +15,7 @@ ACCEPT_KNOWN_HOSTS = 'shell/accept_known_hosts_for_vagrant.sh'
 
 servers = {
   :capalpha => {
-    :box => CENTOS67_BOX_NAME,
+    :box => CENTOS69_BOX_NAME,
     :cpu => '1',
     :ram => '1024',
     :ip => '10.0.0.102',
@@ -26,7 +26,7 @@ servers = {
     ]
   },
   :capbravo => {
-    :box => CENTOS67_BOX_NAME,
+    :box => CENTOS69_BOX_NAME,
     :cpu => '1',
     :ram => '1024',
     :ip => '10.0.0.103',
@@ -37,7 +37,7 @@ servers = {
     ]
   },
   :captut => {
-    :box => CENTOS67_BOX_NAME,
+    :box => CENTOS69_BOX_NAME,
     :cpu => '1',
     :ram => '1024',
     :ip => '10.0.0.101',
@@ -53,7 +53,7 @@ servers = {
     ]
   },
   :captut233 => {
-    :box => CENTOS67_BOX_NAME,
+    :box => CENTOS69_BOX_NAME,
     :cpu => '1',
     :ram => '1024',
     :ip => '10.0.0.104',
