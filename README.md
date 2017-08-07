@@ -18,6 +18,12 @@ Download and install...
 -   VirtualBox from: <https://www.virtualbox.org/wiki/Downloads?replytocom=98578>
 -   Vagrant from: <https://www.vagrantup.com/downloads.html>
 
+If you're on MacOS, please download and install...
+-   Xcode from: the Apple app store
+-   Then, in a terminal, type "sudo xcodebuild -license accept"
+-   Brew from: <https://brew.sh/>
+-   Then, in a terminal, type "brew install gnupg2", "brew install wget", and "brew update".
+
 Next, we'll clone this project and launch Vagrant in a shell session:
 
     git clone https://github.com/ssmythe/capistrano_tutorial.git
