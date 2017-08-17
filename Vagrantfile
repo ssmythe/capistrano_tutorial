@@ -11,6 +11,8 @@ INSTALL_CAP_260 = 'shell/install_capistrano_2.6.0_for_vagrant_user.sh'
 INSTALL_RVM_RUBY_233_NO_DOCS = 'shell/install_ruby_2.3.3_for_vagrant_user.sh'
 INSTALL_CAP_2155 = 'shell/install_capistrano_2.15.5_for_vagrant_user.sh'
 INSTALL_PERL = 'shell/install_perl.sh'
+COPY_GEMFILE187 = 'shell/copy_gemfile_ruby187_to_gemfile.sh'
+COPY_GEMFILE233 = 'shell/copy_gemfile_ruby233_to_gemfile.sh'
 ACCEPT_KNOWN_HOSTS = 'shell/accept_known_hosts_for_vagrant.sh'
 
 servers = {
@@ -47,6 +49,7 @@ servers = {
       INSTALL_SSH_KEYS,
       INSTALL_RVM_PREREQS,
       INSTALL_RVM_RUBY_187_NO_DOCS,
+      COPY_GEMFILE187,
       INSTALL_CAP_260,
       INSTALL_PERL,
       ACCEPT_KNOWN_HOSTS
@@ -63,6 +66,7 @@ servers = {
       INSTALL_SSH_KEYS,
       INSTALL_RVM_PREREQS,
       INSTALL_RVM_RUBY_233_NO_DOCS,
+      COPY_GEMFILE233,
       INSTALL_CAP_2155,
       INSTALL_PERL,
       ACCEPT_KNOWN_HOSTS

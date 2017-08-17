@@ -4,7 +4,8 @@ set :user, 'vagrant'
 
 # Ruby 1.x
 # set :ssh_options, { :keepalive => true, :keepalive_maxcount => 3, :keepalive_interval => 10, :verbose => :debug }
-set :ssh_options, { :keepalive => true, :keepalive_maxcount => 3, :keepalive_interval => 10, :verbose => :info }
+# set :ssh_options, { :keepalive => true, :keepalive_maxcount => 3, :keepalive_interval => 10, :verbose => :info }
+set :ssh_options, { :keepalive => true, :keepalive_maxcount => 3, :keepalive_interval => 10 }
 
 # Ruby 2.x
 # set :ssh_options, { keepalive: true, keepalive_maxcount: 3, keepalive_interval: 10, verbose: :debug }
