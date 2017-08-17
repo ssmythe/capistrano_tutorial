@@ -18,7 +18,7 @@ accept_known_host_ssh_fingerprint() {
 
 echo "${SCRIPT}: start - $(date)"
 
-accept_known_host_ssh_fingerprint 'captut'
+accept_known_host_ssh_fingerprint 'localhost'
 accept_known_host_ssh_fingerprint 'capalpha'
 accept_known_host_ssh_fingerprint 'capbravo'
 

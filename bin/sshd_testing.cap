@@ -5,7 +5,7 @@ set :user, 'vagrant'
 # Ruby 1.x
 # set :ssh_options, { :keepalive => true, :keepalive_maxcount => 3, :keepalive_interval => 10, :verbose => :debug }
 # set :ssh_options, { :keepalive => true, :keepalive_maxcount => 3, :keepalive_interval => 10, :verbose => :info }
-set :ssh_options, { :keepalive => true, :keepalive_maxcount => 3, :keepalive_interval => 10 }
+# set :ssh_options, { :keepalive => true, :keepalive_maxcount => 3, :keepalive_interval => 10 }
 
 # Ruby 2.x
 # set :ssh_options, { keepalive: true, keepalive_maxcount: 3, keepalive_interval: 10, verbose: :debug }
@@ -13,8 +13,7 @@ set :ssh_options, { :keepalive => true, :keepalive_maxcount => 3, :keepalive_int
 # set :ssh_options, { config: true }
 
 # Servers
-server "captut", :all, :local
-server "captut233", :all, :local
+server "localhost", :all, :local
 server "capalpha", :all, :agroup
 server "capbravo", :all, :bgroup
 
@@ -120,9 +119,9 @@ namespace :sshd do
 
   desc "Date sleep date on agroup"
   task :date_sleep_date_on_agroup, :roles => [:agroup] do
-  # task :date_sleep_date_on_agroup, :roles => [:agroup, :bgroup] do
-  #   run "date; sleep 2; date" # happy path
-    run "date; sleep 40; date" # should fail
+    # task :date_sleep_date_on_agroup, :roles => [:agroup, :bgroup] do
+    run "date; sleep 2; date" # happy path
+    # run "date; sleep 40; date" # should fail
     # run "date; sleep 120; date"
   end
 
