@@ -8,9 +8,9 @@ else
 fi
 rvm reload
 rvm --version
-rvm install 1.8.7
-rvm use 1.8.7
-rvm --default use 1.8.7
+rvm install 1.8.7-p374
+rvm use 1.8.7-p374
+rvm --default use 1.8.7-p374
 rvm default
 ruby --version
 gem update --system
