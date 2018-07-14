@@ -33,19 +33,23 @@ Next, we'll clone this project and launch Vagrant in a shell session:
 
 Now you're all set to go!
 
+Note: If you want to use a later version of ruby and capistrano, replace the last shell line above with:
+
+    vagrant ssh captut233
+
 ### How do I know Capistrano is set up right?
 
 Check Ruby returns a version
 
     [vagrant@captut ~]$ ruby --version
-    ruby 2.3.3p222 (2016-11-21 revision 56859) [x86_64-linux]
+    ruby 1.8.7 (2013-06-27 patchlevel 374) [x86_64-linux]
     [vagrant@captut ~]$ 
 
 
 Check Capistrano returns a version
 
     [vagrant@captut ~]$ cap --version
-    Capistrano v2.15.5
+    Capistrano v2.6.0
     [vagrant@captut ~]$ 
 
 ### Simple Capistrano Recipe
@@ -70,9 +74,9 @@ files together.)
 To run this on the command line, just run "cap hello", and the output
 should look like:
 
-    [vagrant@captut ~]$ cap hello
-       * 2016-12-15 14:24:46 executing hello' 
-    Hello world
+    [vagrant@captut ~]$ cap hello
+      * executing `hello'
+    Hello world
     [vagrant@captut ~]$ 
 
 If you edit the Capfile and have it look like this:
@@ -90,7 +94,7 @@ If you edit the Capfile and have it look like this:
 You can run "cap hello:there", and the output should look like:
 
     [vagrant@captut ~]$ cap hello:there
-       * 2016-12-15 14:25:19 executing hello:there' 
+       * executing `hello:there' 
     Hello there
     [vagrant@captut ~]$ 
 
@@ -147,7 +151,7 @@ example and add a simple example:
 Let's look at some sample output:
 
     [vagrant@captut ~]$ cap -s myname=Steve hello:there
-       * 2016-12-15 14:26:44 executing hello:there' 
+       * executing hello:there' 
     Hello there, Steve!
     [vagrant@captut ~]$
 
@@ -157,26 +161,25 @@ easy.
 Now. What happens if you try running the script now without passing in
 the variable?
 
-    [vagrant@captut ~]$ cap hello:there
-       * 2016-12-15 14:27:08 executing hello:there' 
-     /home/vagrant/.rvm/gems/ruby-2.3.1/gems/capistrano-2.15.5/lib/capistrano/configuration/namespaces.rb:193:in method_missing': undefined local variable or method myname' for # <Capistrano::Configuration::Namespaces::Namespace:0x000000027f6758> (NameError)
-        from Capfile:7:in block (2 levels) in load' 
-        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/capistrano-2.15.5/lib/capistrano/configuration/execution.rb:138:in instance_eval' 
-        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/capistrano-2.15.5/lib/capistrano/configuration/execution.rb:138:in invoke_task_directly' 
-        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/capistrano-2.15.5/lib/capistrano/configuration/callbacks.rb:25:in invoke_task_directly_with_callbacks' 
-        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/capistrano-2.15.5/lib/capistrano/configuration/execution.rb:89:in execute_task' 
-        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/capistrano-2.15.5/lib/capistrano/configuration/execution.rb:101:in find_and_execute_task' 
-        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/capistrano-2.15.5/lib/capistrano/cli/execute.rb:46:in block in execute_requested_actions' 
-        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/capistrano-2.15.5/lib/capistrano/cli/execute.rb:45:in each' 
-        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/capistrano-2.15.5/lib/capistrano/cli/execute.rb:45:in execute_requested_actions' 
-        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/capistrano-2.15.5/lib/capistrano/cli/help.rb:19:in execute_requested_actions_with_help' 
-        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/capistrano-2.15.5/lib/capistrano/cli/execute.rb:34:in execute!' 
-        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/capistrano-2.15.5/lib/capistrano/cli/execute.rb:14:in execute' 
-        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/capistrano-2.15.5/bin/cap:4:in  <top (required)>'
-        from /home/vagrant/.rvm/gems/ruby-2.3.1/bin/cap:22:in load' 
-        from /home/vagrant/.rvm/gems/ruby-2.3.1/bin/cap:22:in  <main>'
-        from /home/vagrant/.rvm/gems/ruby-2.3.1/bin/ruby_executable_hooks:15:in eval' 
-        from /home/vagrant/.rvm/gems/ruby-2.3.1/bin/ruby_executable_hooks:15:in  <main>'
+    [vagrant@captut ~]$ cap hello:there
+      * executing `hello:there'
+    /home/vagrant/.rvm/gems/ruby-1.8.7-p374/gems/capistrano-2.6.0/lib/capistrano/configuration/namespaces.rb:188:in `method_missing': undefined local variable or method `myname' for #<Capistrano::Configuration::Namespaces::Namespace:0x7f773fdc4b88> (NameError)
+    	from Capfile:7:in `load'
+    	from /home/vagrant/.rvm/gems/ruby-1.8.7-p374/gems/capistrano-2.6.0/lib/capistrano/configuration/execution.rb:139:in `instance_eval'
+    	from /home/vagrant/.rvm/gems/ruby-1.8.7-p374/gems/capistrano-2.6.0/lib/capistrano/configuration/execution.rb:139:in `invoke_task_directly_without_callbacks'
+    	from /home/vagrant/.rvm/gems/ruby-1.8.7-p374/gems/capistrano-2.6.0/lib/capistrano/configuration/callbacks.rb:27:in `invoke_task_directly'
+    	from /home/vagrant/.rvm/gems/ruby-1.8.7-p374/gems/capistrano-2.6.0/lib/capistrano/configuration/execution.rb:89:in `execute_task'
+    	from /home/vagrant/.rvm/gems/ruby-1.8.7-p374/gems/capistrano-2.6.0/lib/capistrano/configuration/execution.rb:101:in `find_and_execute_task'
+    	from /home/vagrant/.rvm/gems/ruby-1.8.7-p374/gems/capistrano-2.6.0/lib/capistrano/cli/execute.rb:46:in `execute_requested_actions_without_help'
+    	from /home/vagrant/.rvm/gems/ruby-1.8.7-p374/gems/capistrano-2.6.0/lib/capistrano/cli/execute.rb:45:in `each'
+    	from /home/vagrant/.rvm/gems/ruby-1.8.7-p374/gems/capistrano-2.6.0/lib/capistrano/cli/execute.rb:45:in `execute_requested_actions_without_help'
+    	from /home/vagrant/.rvm/gems/ruby-1.8.7-p374/gems/capistrano-2.6.0/lib/capistrano/cli/help.rb:19:in `execute_requested_actions'
+    	from /home/vagrant/.rvm/gems/ruby-1.8.7-p374/gems/capistrano-2.6.0/lib/capistrano/cli/execute.rb:34:in `execute!'
+    	from /home/vagrant/.rvm/gems/ruby-1.8.7-p374/gems/capistrano-2.6.0/lib/capistrano/cli/execute.rb:14:in `execute'
+    	from /home/vagrant/.rvm/gems/ruby-1.8.7-p374/gems/capistrano-2.6.0/bin/cap:4
+    	from /home/vagrant/.rvm/gems/ruby-1.8.7-p374/bin/cap:23:in `load'
+    	from /home/vagrant/.rvm/gems/ruby-1.8.7-p374/bin/cap:23
+    	from /home/vagrant/.rvm/gems/ruby-1.8.7-p374/bin/ruby_executable_hooks:24
     [vagrant@captut ~]$ 
 
 Uh oh... It blew up. That's because we're trying to use a variable that
@@ -199,10 +202,10 @@ See how we set the default value at the top? Easy, huh? Here's the
 output when you run it both ways:
 
     [vagrant@captut ~]$ cap hello:there
-       * 2016-12-15 14:28:07 executing hello:there' 
+       * executing hello:there' 
     Hello there, you person you!
-    [vagrant@captut ~]$ cap hello:there -s myname=Steve
-       * 2016-12-15 14:28:12 executing hello:there' 
+    [vagrant@captut ~]$ cap -s myname=Steve hello:there
+       * executing hello:there' 
     Hello there, Steve!
     [vagrant@captut ~]$
 
@@ -235,13 +238,13 @@ tasks sections in it:
 
 When we run it, the output looks like:
 
-    [vagrant@captut ~]$ cap simple
-       * 2016-12-15 14:29:12 executing simple' 
-      * executing "uname -a"
-        servers: ["localhost"]
-        [localhost] executing command
-     ** [out :: localhost] Linux captut 2.6.32-573.el6.x86_64 #1 SMP Thu Jul 23 15:44:03 UTC 2015 x86_64 x86_64 x86_64 GNU/Linux
-        command finished in 163ms
+    [vagrant@captut ~]$ cap simple
+      * executing `simple'
+      * executing "uname -a"
+        servers: ["localhost"]
+        [localhost] executing command
+     ** [out :: localhost] Linux captut 2.6.32-696.30.1.el6.x86_64 #1 SMP Tue May 22 03:28:18 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux
+        command finished in 182ms
     [vagrant@captut ~]$
 
 So let's see what's going on...
@@ -344,24 +347,22 @@ Let's see how this works:
 
 So let's run it and see what happens:
 
-    [vagrant@captut ~]$ cap simple
-       * 2016-12-16 07:00:25 executing simple' 
-       * 2016-12-16 07:00:25 executing simple:display_hostname' 
-      * executing multiple commands in parallel
-        -> "else" :: "uname -n"
-        -> "else" :: "uname -n"
-        servers: ["capalpha", "capbravo"]
-        [capbravo] executing command
-        [capalpha] executing command
-     ** [out :: capbravo] capbravo
-     ** [out :: capalpha] capalpha
-        command finished in 233ms
-      * 2016-12-16 07:00:25 executing simple:display_current_user' 
-      * executing "whoami"
-        servers: ["capalpha"]
-        [capalpha] executing command
-     ** [out :: capalpha] vagrant
-        command finished in 8ms
+    [vagrant@captut ~]$ cap simple
+      * executing `simple'
+      * executing `simple:display_hostname'
+      * executing "uname -n"
+        servers: ["capalpha", "capbravo"]
+        [capalpha] executing command
+        [capbravo] executing command
+     ** [out :: capalpha] capalpha
+     ** [out :: capbravo] capbravo
+        command finished in 201ms
+      * executing `simple:display_current_user'
+      * executing "whoami"
+        servers: ["capalpha"]
+        [capalpha] executing command
+     ** [out :: capalpha] vagrant
+        command finished in 38ms
     [vagrant@captut ~]$ 
 
 Check that out! The ", :roles =&gt; :all" on the display\_hostname task
@@ -400,16 +401,16 @@ Let's say you want to do something special in the "qa" environment.
 
 Let's run it with defaults and then run it setting "env=qa":
 
-    [vagrant@captut ~]$ cap conditional
-       * 2016-12-16 07:01:42 executing conditional' 
-       * 2016-12-16 07:01:42 executing conditional:run_everywhere' 
-    I'm running everywhere
-    [vagrant@captut ~]$ cap conditional -s env=qa
-       * 2016-12-16 07:01:51 executing conditional' 
-       * 2016-12-16 07:01:51 executing conditional:run_everywhere' 
-    I'm running everywhere
-       * 2016-12-16 07:01:51 executing conditional:run_in_qa' 
-    I'm only running in qa
+    [vagrant@captut ~]$ cap conditional
+      * executing `conditional'
+      * executing `conditional:run_everywhere'
+    I'm running everywhere
+    [vagrant@captut ~]$ cap -s env=qa conditional
+      * executing `conditional'
+      * executing `conditional:run_everywhere'
+    I'm running everywhere
+      * executing `conditional:run_in_qa'
+    I'm only running in qa
     [vagrant@captut ~]$
 
 ### Cleanup
